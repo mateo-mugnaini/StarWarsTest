@@ -12,7 +12,7 @@ const MoviesDetailPage = async (episode_id) => {
 
   const charactersMovie = MovieDetail.characters;
 
-  console.log(charactersMovie);
+  // console.log(charactersMovie);
   return (
     <div>
       <h1>All movies page</h1>
@@ -22,7 +22,9 @@ const MoviesDetailPage = async (episode_id) => {
           {/* IMAGEN GENERICA */}
           <p>Numero de Episodio: {MovieDetail.episode_id}</p>
           <p>Director: {MovieDetail.director}</p>
-          <div></div>
+          {/* RENDER DE PERSONAJES DEL CAPITULO
+          <div></div> 
+          */}
         </div>
       </Suspense>
     </div>
