@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { getCharacterDetail } from "@/app/api/characters/getCharacterDetail";
-import Loading from "@/components/loading/loading";
 import Image from "next/image";
 import DefaultImg from "@/../public/characters/characterDefault.png";
 

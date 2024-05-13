@@ -1,11 +1,10 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { getAllCharacters } from "../api/characters/getAllCharacters";
 import Loading from "@/components/loading/loading";
 import Link from "next/link";
-import DefaultImg from "@/../public/characters/characterDefault.png";
 import Image from "next/image";
-import { Limelight } from "next/font/google";
+import DefaultImg from "@/../public/characters/characterDefault.png";
 
 const CharactersPage = () => {
   const [characters, setCharacters] = useState([]);
@@ -51,6 +50,7 @@ const CharactersPage = () => {
     indexOfLastCharacter
   );
 
+  console.log(characters);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const nextPage = () => {
@@ -67,46 +67,15 @@ const CharactersPage = () => {
     }
   };
 
-  // const findCharacterIndexByName = (name) => {
-  //   const aux =
-  //     characters.findIndex((character) => character.name === name) + 1;
-  //   console.log(aux);
-  //   return aux;
-  // };
-
-  const handleMouseEnter = (event, character) => {
-    if (character.eye_color === "blue") {
-      event.target.style.borderColor = "blue";
-    } else if (character.eye_color === "red") {
-      event.target.style.borderColor = "red";
-    } else if (character.eye_color === "yellow") {
-      event.target.style.borderColor = "yellow";
-    } else if (character.eye_color === "blue-gray") {
-      event.target.style.borderColor = "gray";
-    } else if (character.eye_color === "brown") {
-      event.target.style.borderColor = "brown";
-    } else if (character.eye_color === "hazel") {
-      event.target.style.borderColor = "#756A61";
-    } else if (character.eye_color === "orange") {
-      event.target.style.borderColor = "orange";
-    } else if (character.eye_color === "pink") {
-      event.target.style.borderColor = "pink";
-    }
-  };
-
-  const handleMouseLeave = (event) => {
-    event.target.style.borderColor = "black"; // Cambia el color de borde a su valor original al salir del hover
-  };
-
   return (
     <div className='container mx-auto py-8'>
+      {/* Filtros */}
       <div className='flex justify-between mb-4'>
         <div className='w-full flex gap-4 align-center justify-center'>
-          {/* Filtros */}
           <label className='block mb-2'>
             Filtrar por color de ojos:
             <select
-              className='block w-full border border-gray-300 text-black rounded-md py-2 px-3 focus:outline-none focus:border-blue-500'
+              className='block w-full text-black rounded-md py-2 px-3 focus:outline-none focus:border-blue-500'
               value={filters.eyeColor}
               onChange={(e) => handleFilterChange("eyeColor", e.target.value)}>
               <option value=''>Todos</option>
@@ -131,56 +100,49 @@ const CharactersPage = () => {
           </label>
         </div>
       </div>
-      <div className='flex flex-wrap align-center justify-center sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+      {/* Personajes */}
+      <div className='gap-4 flex flex-wrap align-center justify-center'>
         {currentCharacters.length === 0 ? (
           <Loading />
         ) : (
           currentCharacters.map((character, index) => (
             <div
               key={index}
-              className='bg-gray-800 rounded-lg p-4 shadow-md flex flex-col justify-between w-1/4 border-2 border-gray-800'
-              onMouseEnter={(event) => handleMouseEnter(event, character)}
-              onMouseLeave={(event) => handleMouseLeave(event)}>
-              <div className='flex flex-row gap-6'>
-                <Image
-                  className='rounded-full'
-                  src={DefaultImg}
-                  alt={character.name}
-                  width={100}
-                  height={100}
-                />
-                <div className='flex flex-col items-start justify-around'>
-                  <h2 className='text-yellow-400 text-2xl font-bold ml-2'>
+              className={`flex align-center justify-center bg-gray-800 rounded-lg p-4 shadow-md border-4`}>
+              <div className='flex flex-col align-center justify-between w-[200px] h-[250px]'>
+                <div className='flex items-center justify-center '>
+                  <Image
+                    className='rounded-full'
+                    src={DefaultImg}
+                    alt={character.name}
+                    width={100}
+                    height={100}
+                  />
+                </div>
+                <div className='mt-4 text-center'>
+                  <h2 className='text-yellow-400 text-2xl font-bold'>
                     {character.name}
                   </h2>
-                  <div className='flex items-center ml-2'>
-                    {character.eye_color === "n/a" ? (
-                      <div>
-                        <br />
-                      </div>
-                    ) : character.eye_color === "unknown" ? (
-                      <div>
-                        <br />
-                      </div>
-                    ) : (
-                      <p>Color Eyes: {character.eye_color}</p>
-                    )}
-                  </div>
-                  <div className='flex items-center ml-2'>
-                    {character.gender === "n/a" ? (
-                      <div>
-                        <br />
-                      </div>
-                    ) : character.gender === "unknown" ? (
-                      <div>
-                        <br />
-                      </div>
-                    ) : (
-                      <p>Género: {character.gender}</p>
-                    )}
-                  </div>
-                  <Link className="ml-2'" href={`characters/${index + 1}`}>
-                    <p className='text-white-500 hover:underline ml-2 '>
+                  {character.eye_color === "n/a" ||
+                  character.eye_color === "unknown" ? (
+                    <div>
+                      <br />
+                    </div>
+                  ) : (
+                    <p className='text-white'>
+                      Color de ojos: {character.eye_color}
+                    </p>
+                  )}
+                  {character.gender === "n/a" ||
+                  character.gender === "unknown" ? (
+                    <div>
+                      <br />
+                    </div>
+                  ) : (
+                    <p className='text-white'>Género: {character.gender}</p>
+                  )}
+                  <Link href={`characters/${character.url.split("/")[5]}`}>
+                    <p className='text-blue-500 hover:underline'>
                       Ver más información
                     </p>
                   </Link>
@@ -198,10 +160,9 @@ const CharactersPage = () => {
           disabled={currentPage === 1}>
           Anterior
         </button>
+
         {Array.from(
-          {
-            length: Math.ceil(filteredCharacters.length / charactersPerPage),
-          },
+          { length: Math.ceil(filteredCharacters.length / charactersPerPage) },
           (_, i) => (
             <button
               key={i}
