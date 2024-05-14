@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
-import Background from "@/../public/backgrounds/background1.jpg";
+import Background from "@/../public/backgrounds/background3.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +16,12 @@ export default function RootLayout({ children }) {
       <body
         className={inter.className}
         style={{
+          backgroundColor: "#0A0722",
           backgroundImage: `url(${Background.src})`,
+          backgroundPositionX: "100px",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
         }}>
         <Navbar />
         {children}

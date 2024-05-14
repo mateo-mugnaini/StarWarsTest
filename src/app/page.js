@@ -1,33 +1,30 @@
-import React from "react";
-import Link from "next/link";
+"use client";
+import React, { useRef } from "react";
 import Image from "next/image";
 import ImagenTitle from "@/../public/Titles/SW_Title.png";
+import HomeBtn from "./components/homeBtns";
 
 const Home = () => {
+  const buttonRef = useRef(null);
+
+  const handleClick = () => {
+    buttonRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className='min-h-screen flex justify-center items-center'>
-      <div className='container px-4 py-8 flex  justify-between m-7 items-center'>
-        <div className='mb-8'>
-          <Image src={ImagenTitle} alt='Star Wars' width={400} height={200} />
+    <div className='min-h-screen flex flex-col justify-center items-center'>
+      <div className='container h-screen flex flex-col justify-center items-center -ml-40 mt-20'>
+        <Image src={ImagenTitle} alt='Star Wars' width={400} height={200} />
+        <div
+          className='mt-16 p-3 rounded-2xl border-2 border-yellow-300 hover:border-yellow-500 cursor-pointer'
+          onClick={handleClick}>
+          <p className='font-play'>May the Force be with you</p>
         </div>
-        <div className='flex justify-center'>
-          <div className='flex  gap-8'>
-            <Link href='/characters'>
-              <p
-                className='bg-yellow-500 hover:bg-yellow-600 w-[200px] text-gray-900 font-bold py-2 px-4 rounded'
-                role='button'>
-                Personajes
-              </p>
-            </Link>
-            <Link href='/movies'>
-              <p
-                className='bg-yellow-500 hover:bg-yellow-600 w-[200px] text-gray-900 font-bold py-2 px-4 rounded'
-                role='button'>
-                Películas
-              </p>
-            </Link>
-          </div>
-        </div>
+      </div>
+      <div
+        ref={buttonRef}
+        className='flex h-screen w-full flex align-center justify-start gap-16 px-40 py-96'>
+        <HomeBtn />
       </div>
     </div>
   );
