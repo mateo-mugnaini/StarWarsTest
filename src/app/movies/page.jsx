@@ -46,7 +46,7 @@ const MoviesPage = async () => {
             ))
           ) : (
             <div>
-              <p>No existen películas</p>
+              <p>There are no movies</p>
             </div>
           )}
         </div>
