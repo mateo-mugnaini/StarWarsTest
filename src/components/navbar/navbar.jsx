@@ -15,9 +15,6 @@ const Navbar = () => {
       <div className='max-w-7xl mx-auto px-4'>
         <div className='flex justify-between'>
           <div className='flex space-x-4'>
-            <Link href='/' passHref>
-              <p className='text-white hover:text-gray-300'>Home</p>
-            </Link>
             <Link href='/characters' passHref>
               <p className='text-white hover:text-gray-300'>Characters</p>
             </Link>
