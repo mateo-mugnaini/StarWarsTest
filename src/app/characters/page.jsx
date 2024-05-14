@@ -68,7 +68,7 @@ const CharactersPage = () => {
   return (
     <div className='container mx-auto py-8'>
       {/* ============ Filtros ============ */}
-      <div className='w-full flex flex-row gap-4 align-center justify-center mb-4'>
+      <div className='w-full flex flex-col md:flex-row gap-4 items-center justify-center mb-4'>
         <label className='p-2'>
           Filtrar por color de ojos:
           <select
@@ -103,16 +103,16 @@ const CharactersPage = () => {
         </label>
       </div>
       {/* ============ Personajes ============ */}
-      <div className='gap-4 flex flex-wrap align-center justify-center'>
+      <div className='gap-4 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 items-center justify-center'>
         {currentCharacters.length === 0 ? (
           <Loading />
         ) : (
           currentCharacters.map((character, index) => (
             <div
               key={index}
-              className='flex align-center justify-center bg-gray-800 rounded-lg p-4 shadow-md border-4 bg-opacity-75'>
-              <div className='flex flex-col align-center justify-between w-[200px] h-[260px]'>
-                <div className='flex items-center justify-center '>
+              className='flex items-center justify-center bg-gray-800 rounded-lg p-4 shadow-md border-2 border-transparent hover:border-yellow-500  bg-opacity-75'>
+              <div className='flex flex-col items-center justify-between w-full md:w-[200px] h-[260px]'>
+                <div className='flex items-center justify-center'>
                   <Image
                     className='rounded-full'
                     src={DefaultImg}
@@ -145,9 +145,9 @@ const CharactersPage = () => {
                     </p>
                   )}
                   <a
-                    className='flex  align-center justify-center'
+                    className='flex items-center justify-center'
                     href={`characters/${character.url.split("/")[5]}`}>
-                    <p className='w-[75%] px-5 py-1 border-2 border-yellow-300 rounded-lg hover:border-yellow-500'>
+                    <p className='w-[100%] px-5 py-1 border-2 border-yellow-300 rounded-lg hover:border-yellow-500'>
                       ...see more
                     </p>
                   </a>

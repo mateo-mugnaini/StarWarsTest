@@ -23,7 +23,7 @@ const Home = () => {
       </div>
       <div
         ref={buttonRef}
-        className='flex h-screen w-full flex align-center justify-start gap-16 px-40 py-96'>
+        className='flex h-screen w-full flex items-center justify-start gap-16 px-40 py-96'>
         <HomeBtn />
       </div>
     </div>

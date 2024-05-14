@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import DefaultImg from "@/../public/characters/characterDefault.png";
 import Image from "next/image";
-import Link from "next/link";
 
 const CharactersList = ({ characters }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,41 +19,46 @@ const CharactersList = ({ characters }) => {
   );
 
   return (
-    <div className='text-white text-center h-[400px] flex flex-col align-center justify-evenly p-py'>
+    <div className='text-center flex flex-col items-center justify-evenly'>
       <div>
-        <p>Characters</p>
+        <p className='text-yellow-500 text-2xl font-bold '>Characters</p>
       </div>
-      <div>
+      <div className='flex flex-col justify-start w-full'>
         {currentCharacters.map((character, index) => (
-          <div key={index} className='flex row gap-4 p-3'>
+          <div
+            key={index}
+            className='flex flex-col md:flex-row gap-4 p-3 justify-start items-center'>
             <Image
-              className='rounded-full'
+              style={{ filter: "invert(50%)" }}
               src={DefaultImg}
               alt={character.name}
               width={50}
               height={200}
             />
-            <div className='flex flex-col'>
+            <div className='flex flex-col text-start justify-start'>
               <p>Name: {character.name}</p>
-              <Link
+              <a
+                className='hover:text-yellow-500'
                 href={`/characters/${
                   character.url.split("/").slice(-2, -1)[0]
                 }`}>
-                Ver más del personaje
-              </Link>
+                ...see more
+              </a>
             </div>
           </div>
         ))}
       </div>
-      <div>
+      <div className='flex items-center justify-around w-full'>
         <button
+          className='hover:text-yellow-500'
           onClick={() =>
             handlePageChange(currentPage > 1 ? currentPage - 1 : currentPage)
           }
           disabled={currentPage === 1}>
-          Anterior
+          Prev
         </button>
         <button
+          className='hover:text-yellow-500'
           onClick={() =>
             handlePageChange(
               currentPage < Math.ceil(characters.length / pageSize)
@@ -63,7 +67,7 @@ const CharactersList = ({ characters }) => {
             )
           }
           disabled={currentPage === Math.ceil(characters.length / pageSize)}>
-          Siguiente
+          Next
         </button>
       </div>
     </div>

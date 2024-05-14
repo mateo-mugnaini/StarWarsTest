@@ -1,9 +1,8 @@
 import React, { Suspense } from "react";
 import { getAllMovies } from "../api/movies/getAllMovies";
 import Loading from "@/components/loading/loading";
-import Link from "next/link";
 import Image from "next/image";
-import BgImage from "@/../public/backgrounds/background3.jpg";
+import BgImage from "@/../public/movies/moviesIcon.webp";
 
 const MoviesPage = async () => {
   const data = await getAllMovies();
@@ -18,32 +17,29 @@ const MoviesPage = async () => {
             AllMovies?.map((film) => (
               <div
                 key={film?.episode_id}
-                className='bg-gray-800 rounded-lg  shadow-md border-4 text-white'>
-                <div className='flex flex-col align-center justify-center'>
+                className='bg-gray-800 bg-opacity-75 rounded-lg  shadow-md border-2 border-transparent hover:border-yellow-500  text-white'>
+                <div className='flex flex-col items-center justify-center'>
                   <Image
-                    style={{
-                      height: "100px",
-                      objectFit: "cover",
-                    }}
+                    className='h-[100px] rounded-t-lg object-cover'
                     src={BgImage}
                     alt={film.title}
                     width={900}
                     height={50}
                   />
-                  <div className='p-10 flex flex-col align-center justify-center'>
+                  <div className='p-10 flex flex-col items-center justify-center'>
                     <h1 className='text-center text-yellow-500 text-3xl mb-2 font-bold'>
                       {film?.title}
                     </h1>
                     <h2 className='text-center mb-3'>
-                      Episodio: {film.episode_id}
+                      Episode: {film.episode_id}
                     </h2>
-                    <Link
-                      className='flex align-center justify-center'
+                    <a
+                      className='flex  items-center justify-center'
                       href={`/movies/${film.episode_id}`}>
-                      <p className='text-blue-500 hover:underline cursor-pointer'>
-                        Ver más información
+                      <p className='px-5 py-1 border-2 border-yellow-300 rounded-lg hover:border-yellow-500'>
+                        see more
                       </p>
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
