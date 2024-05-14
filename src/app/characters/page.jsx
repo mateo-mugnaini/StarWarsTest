@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllCharacters } from "../api/characters/getAllCharacters";
 import Loading from "@/components/loading/loading";
-import Link from "next/link";
 import Image from "next/image";
 import DefaultImg from "@/../public/characters/characterDefault.png";
 
@@ -50,7 +49,6 @@ const CharactersPage = () => {
     indexOfLastCharacter
   );
 
-  console.log(characters);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const nextPage = () => {
@@ -69,38 +67,42 @@ const CharactersPage = () => {
 
   return (
     <div className='container mx-auto py-8'>
-      {/* Filtros */}
-      <div className='flex justify-between mb-4'>
-        <div className='w-full flex gap-4 align-center justify-center'>
-          <label className='block mb-2'>
-            Filtrar por color de ojos:
-            <select
-              className='block w-full text-black rounded-md py-2 px-3 focus:outline-none focus:border-blue-500'
-              value={filters.eyeColor}
-              onChange={(e) => handleFilterChange("eyeColor", e.target.value)}>
-              <option value=''>Todos</option>
-              <option value='blue'>Azul</option>
-              <option value='brown'>Marrón</option>
-              <option value='green'>Verde</option>
-              {/* Agregar más opciones según los colores de ojos */}
-            </select>
-          </label>
-          <label className='block'>
-            Filtrar por género:
-            <select
-              className='block w-full border border-gray-300 text-black rounded-md py-2 px-3 focus:outline-none focus:border-blue-500'
-              value={filters.gender}
-              onChange={(e) => handleFilterChange("gender", e.target.value)}>
-              <option value=''>Todos</option>
-              <option value='male'>Masculino</option>
-              <option value='female'>Femenino</option>
-              <option value='n/a'>No Aplica</option>
-              {/* Agregar más opciones según los géneros */}
-            </select>
-          </label>
-        </div>
+      {/* ============ Filtros ============ */}
+      <div className='w-full flex flex-row gap-4 align-center justify-center mb-4'>
+        <label className='p-2'>
+          Filtrar por color de ojos:
+          <select
+            className='block w-full border-2 border-yellow-300 bg-black rounded-md py-2 px-3 focus:outline-none focus:border-yellow-600'
+            value={filters.eyeColor}
+            onChange={(e) => handleFilterChange("eyeColor", e.target.value)}>
+            <option value=''>All</option>
+            <option value='red'>Red</option>
+            <option value='blue'>Blue</option>
+            <option value='gold'>Gold</option>
+            <option value='pink'>Pink</option>
+            <option value='hazel'>Hazel</option>
+            <option value='black'>Black</option>
+            <option value='yellow'>Yellow</option>
+            <option value='brown'>Brown</option>
+            <option value='orange'>Orange</option>
+            <option value='red, blue'>Red - Blue</option>
+            <option value='blue-gray'>Blue - Gray</option>
+            <option value='green, yellow'>Green - Yellow</option>
+          </select>
+        </label>
+        <label className='p-2'>
+          Filtrar por género:
+          <select
+            className='block w-full border-2 border-yellow-300 bg-black rounded-md py-2 px-3 focus:outline-none focus:border-yellow-600'
+            value={filters.gender}
+            onChange={(e) => handleFilterChange("gender", e.target.value)}>
+            <option value=''>All</option>
+            <option value='male'>Male</option>
+            <option value='female'>Female</option>
+          </select>
+        </label>
       </div>
-      {/* Personajes */}
+      {/* ============ Personajes ============ */}
       <div className='gap-4 flex flex-wrap align-center justify-center'>
         {currentCharacters.length === 0 ? (
           <Loading />
@@ -108,8 +110,8 @@ const CharactersPage = () => {
           currentCharacters.map((character, index) => (
             <div
               key={index}
-              className={`flex align-center justify-center bg-gray-800 rounded-lg p-4 shadow-md border-4`}>
-              <div className='flex flex-col align-center justify-between w-[200px] h-[250px]'>
+              className='flex align-center justify-center bg-gray-800 rounded-lg p-4 shadow-md border-4 bg-opacity-75'>
+              <div className='flex flex-col align-center justify-between w-[200px] h-[260px]'>
                 <div className='flex items-center justify-center '>
                   <Image
                     className='rounded-full'
@@ -120,7 +122,7 @@ const CharactersPage = () => {
                   />
                 </div>
                 <div className='mt-4 text-center'>
-                  <h2 className='text-yellow-400 text-2xl font-bold'>
+                  <h2 className='text-yellow-400 text-2xl font-play font-bold'>
                     {character.name}
                   </h2>
                   {character.eye_color === "n/a" ||
@@ -129,36 +131,39 @@ const CharactersPage = () => {
                       <br />
                     </div>
                   ) : (
-                    <p className='text-white'>
-                      Color de ojos: {character.eye_color}
+                    <p className='text-white capitalize'>
+                      Eye Color: {character.eye_color}
                     </p>
                   )}
-                  {character.gender === "n/a" ||
-                  character.gender === "unknown" ? (
+                  {character.gender === "n/a" || character.gender === "none" ? (
                     <div>
                       <br />
                     </div>
                   ) : (
-                    <p className='text-white'>Género: {character.gender}</p>
-                  )}
-                  <Link href={`characters/${character.url.split("/")[5]}`}>
-                    <p className='text-blue-500 hover:underline'>
-                      Ver más información
+                    <p className='text-white capitalize'>
+                      Gender: {character.gender}
                     </p>
-                  </Link>
+                  )}
+                  <a
+                    className='flex  align-center justify-center'
+                    href={`characters/${character.url.split("/")[5]}`}>
+                    <p className='w-[75%] px-5 py-1 border-2 border-yellow-300 rounded-lg hover:border-yellow-500'>
+                      ...see more
+                    </p>
+                  </a>
                 </div>
               </div>
             </div>
           ))
         )}
       </div>
-      {/* Paginación */}
+      {/* ============ Paginación ============ */}
       <div className='flex justify-center mt-4'>
         <button
-          className='bg-gray-900 rounded border-2 border-gray-900 hover:border-violet-500 text-white font-semibold py-2 px-4 rounded-r focus:outline-none'
+          className='bg-gray-900 rounded border-2 border-gray-900 hover:border-yellow-600 text-white font-semibold py-2 px-4 rounded-r focus:outline-none'
           onClick={prevPage}
           disabled={currentPage === 1}>
-          Anterior
+          Prev
         </button>
 
         {Array.from(
@@ -168,22 +173,22 @@ const CharactersPage = () => {
               key={i}
               className={`${
                 currentPage === i + 1
-                  ? "bg-gray-900 border-green-700 shadow-sm text-white"
-                  : "bg-gray-900 border-red-700 text-white"
-              } font-semibold py-2 px-4 focus:outline-none mx-2 border-2 rounded-md transition-colors duration-300 hover:border-purple-500`}
+                  ? "bg-gray-900 border-yellow-300 shadow-sm text-white"
+                  : "bg-gray-900 border-gray-900 text-white"
+              } font-semibold py-2 px-4 focus:outline-none mx-2 border-2 rounded-md transition-colors duration-300 hover:border-yellow-600`}
               onClick={() => paginate(i + 1)}>
               {i + 1}
             </button>
           )
         )}
         <button
-          className='bg-gray-900 rounded border-2 border-gray-900 hover:border-violet-500 text-white font-semibold py-2 px-4 rounded-r focus:outline-none'
+          className='bg-gray-900 rounded border-2 border-gray-900 hover:border-yellow-600 text-white font-semibold py-2 px-4 rounded-r focus:outline-none'
           onClick={nextPage}
           disabled={
             currentPage ===
             Math.ceil(filteredCharacters.length / charactersPerPage)
           }>
-          Siguiente
+          Next
         </button>
       </div>
     </div>

@@ -8,31 +8,35 @@ const HomeBtn = () => {
     <>
       <a
         href='/characters'
-        className='w-[300px] h-[300px] border-2 border-yellow-300 rounded-2xl flex flex-col items-center justify-center p-4 text-center shadow-md border-4 hover:border-yellow-500 hover:text-blue-500 cursor-pointer'>
-        <div className='flex flex items-center justify-center'>
+        className='relative w-[410px] h-[210px] flex flex-col items-center justify-center text-center shadow-md cursor-pointer hover:border-2 '>
+        <div className='relative'>
           <Image
             src={CharacterIcon}
             alt=''
+            className='w-[400px] h-[200px] object-cover'
             width={200}
-            height={200}
-            className='w-[200px] h-[200px] object-cover'
+            height={100}
           />
+          <p className='absolute inset-0 flex items-center justify-center text-white font-bold text-xl'>
+            Characters
+          </p>
         </div>
-        <p className='mt-3 font-bold text-xl'>Characters</p>
       </a>
       <a
         href='/movies'
-        className='w-[300px] h-[300px] border-2 border-yellow-300 rounded-2xl flex flex-col items-center justify-center p-4 text-center shadow-md border-4 hover:border-yellow-500 hover:text-red-500 cursor-pointer'>
-        <div className='flex flex items-center justify-center '>
+        className='relative w-[410px] h-[210px] flex flex-col items-center justify-center text-center shadow-md cursor-pointer hover:border-2 '>
+        <div className='relative'>
           <Image
             src={MoviesIcon}
             alt=''
+            className='w-[400px] h-[200px] object-cover '
             width={200}
-            height={200}
-            className='w-[200px] h-[200px] object-cover'
+            height={100}
           />
+          <p className='absolute inset-0 flex items-center justify-center text-white font-bold text-xl'>
+            Movies
+          </p>
         </div>
-        <p className='mt-3 font-bold text-xl'>Movies</p>
       </a>
     </>
   );

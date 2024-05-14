@@ -3,7 +3,7 @@ import { getAllMovies } from "../api/movies/getAllMovies";
 import Loading from "@/components/loading/loading";
 import Link from "next/link";
 import Image from "next/image";
-import BgImage from "@/../public/backgrounds/background2.jpg";
+import BgImage from "@/../public/backgrounds/background3.jpg";
 
 const MoviesPage = async () => {
   const data = await getAllMovies();

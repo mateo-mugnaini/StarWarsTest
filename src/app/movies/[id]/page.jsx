@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { getMovieDetail } from "@/app/api/movies/getMovieDetail";
 import Loading from "@/components/loading/loading";
-import BgImage from "@/../public/backgrounds/background2.jpg";
+import BgImage from "@/../public/backgrounds/background3.jpg";
 import Image from "next/image";
 import CharactersList from "./components/listCharacters";
 
