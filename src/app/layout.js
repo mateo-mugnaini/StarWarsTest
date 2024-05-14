@@ -16,6 +16,11 @@ export default function RootLayout({ children }) {
       <body
         className={inter.className}
         style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+          height: "100vh",
           backgroundColor: "#0A0722",
           backgroundImage: `url(${Background.src})`,
           backgroundPositionX: "100px",

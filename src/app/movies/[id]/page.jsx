@@ -13,7 +13,7 @@ const MoviesDetailPage = async (episode_id) => {
   const { MovieDetail, Characters } = data;
 
   return (
-    <div className='flex flex-col md:flex-row justify-center items-center rounded-2xl my-10 md:my-20 mx-4 md:mx-10 lg:mx-20 bg-cover bg-gray-800 bg-center bg-opacity-75 py-10 px-20 gap-5'>
+    <div className='flex flex-col md:flex-row justify-center items-center rounded-2xl my-5 md:my-20 mx-4 md:mx-10 lg:mx-20 bg-cover bg-gray-800 bg-center bg-opacity-75 py-5 px-20 gap-5'>
       <Suspense fallback={<Loading />}>
         <div className='flex flex-col text-white rounded-2xl text-center md:text-left md:w-full md:max-w-[60%]'>
           <Image
@@ -31,7 +31,7 @@ const MoviesDetailPage = async (episode_id) => {
             <p>Director: {MovieDetail.director}</p>
           </div>
         </div>
-        <div className='content bg-gray-900 bg-opacity-75 rounded-2xl p-5 md:w-[20%]'>
+        <div className='content bg-gray-900 bg-opacity-75 rounded-2xl p-5 md:w-[23%]'>
           <CharactersList characters={Characters} />
         </div>
       </Suspense>

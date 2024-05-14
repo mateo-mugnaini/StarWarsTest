@@ -50,7 +50,7 @@ const CharactersList = ({ characters }) => {
       </div>
       <div className='flex items-center justify-around w-full'>
         <button
-          className='hover:text-yellow-500'
+          className='hover:text-yellow-500 cursor-pointer'
           onClick={() =>
             handlePageChange(currentPage > 1 ? currentPage - 1 : currentPage)
           }
@@ -58,7 +58,7 @@ const CharactersList = ({ characters }) => {
           Prev
         </button>
         <button
-          className='hover:text-yellow-500'
+          className='hover:text-yellow-500 cursor-pointer'
           onClick={() =>
             handlePageChange(
               currentPage < Math.ceil(characters.length / pageSize)
