@@ -12,7 +12,7 @@ const Home = () => {
   };
 
   return (
-    <div className='min-h-screen flex flex-col justify-center items-center'>
+    <div className='m-h-screen flex flex-col justify-center items-center'>
       <div className='container h-screen flex flex-col justify-center items-center -ml-40 mt-20'>
         <Image src={ImagenTitle} alt='Star Wars' width={400} height={200} />
         <div
@@ -23,7 +23,7 @@ const Home = () => {
       </div>
       <div
         ref={buttonRef}
-        className='flex h-screen w-full flex items-center justify-start gap-16 px-40 py-96'>
+        className='flex h-screen w-[1900px] items-center justify-start px-20'>
         <HomeBtn />
       </div>
     </div>
