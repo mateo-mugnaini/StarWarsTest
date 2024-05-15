@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bienvenidos a StarWarsApp 🌌✨
 
-## Getting Started
+WEB: [https://starwarsappbytunombre.vercel.app/](https://starwars-test-mateomugnaini.vercel.app/)
 
-First, run the development server:
+StarWarsApp es una aplicación donde los usuarios pueden explorar personajes y películas del universo de Star Wars. Los usuarios tienen la opción de ver una lista completa de personajes o películas, así como detalles específicos de cada uno.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Información que se muestra:
+Filtros Disponibles:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🌟 Exploración:
+Todos los personajes <br/>
+Todas las películas <br/>
+Detalle de Personajes: <br/>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+📌 Nombre <br/>
+📌 Fecha de nacimiento <br/>
+📌 Color de ojos <br/>
+📌 Color de piel <br/>
+📌 Altura <br/>
+📌 Peso <br/>
+Detalle de Películas: <br/>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+📌 Título <br/>
+📌 Número de capítulo <br/>
+📌 Director <br/>
+📌 Listado de personajes <br/>
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Tecnologías  <br/>
+📌 HTML<br/>
+📌 Javascript<br/>
+📌 Tailwind<br/>
+📌 React.JS<br/>
+📌 Next.JS<br/>
+<br/>
+DEPLOY:<br/>
+📌 Vercel<br/>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+¡Muchas gracias por leer!
